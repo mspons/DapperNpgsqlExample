@@ -7,13 +7,15 @@ using Npgsql;
 
 namespace DapperNpgsqlConsole
 {
+    using System.Configuration;
+
     public class DataRetriever : IDisposable
     {
         private readonly IDbConnection dbConnection;
 
         public DataRetriever()
         {
-            dbConnection = new NpgsqlConnection("Server=192.168.2.4;Port=5432;User Id=beer_tracker_dev;Password=btdev;Database=beer_tracker_dev;");
+            dbConnection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dapper"].ToString());
             dbConnection.Open();
         }
 

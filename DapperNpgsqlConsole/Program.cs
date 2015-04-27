@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-
-using Dapper;
-using Npgsql;
 
 namespace DapperNpgsqlConsole
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             using (var t = new DataRetriever())
             {
@@ -33,6 +28,4 @@ namespace DapperNpgsqlConsole
             }
         }
     }
-
-
 }
