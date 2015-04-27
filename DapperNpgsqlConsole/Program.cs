@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 
 using Dapper;
@@ -10,38 +11,28 @@ namespace DapperNpgsqlConsole
     {
         static void Main(string[] args)
         {
+            using (var t = new DataRetriever())
+            {
+                Console.WriteLine("Beers\n=====");
+                
+                var beers = t.GetBeers();
+
+                foreach (var beer in beers)
+                {
+                    Console.WriteLine("{0} - {1}", beer.Name, beer.Abv);
+                }
+
+                Console.WriteLine("\nStyles\n======");
+
+                var styles = t.GetStyles();
+
+                foreach (var style in styles)
+                {
+                    Console.WriteLine("{0} - {1}", style.Name, style.Description);
+                }
+            }
         }
     }
 
-    public class Test : IDisposable
-    {
-        private readonly IDbConnection dbConnection;
 
-        public Test()
-        {
-            dbConnection = new NpgsqlConnection("Server=192.168.2.4;Port=5432;User Id=beer_tracker_dev;Password=btdev;Database=beer_tracker_dev;");
-            dbConnection.Open();
-        }
-
-        public void TestQuery()
-        {
-            //var rows = dbConnection.Query("select * from beers");
-
-            var beer = dbConnection.Query<Beer>("select * from beers");
-        }
-
-        public void Dispose()
-        {
-            dbConnection.Close();
-        }
-    }
-
-    public class Beer
-    {
-        public int Beer_Id { get; set; }
-        public string Name { get; set; }
-        public decimal Abv { get; set; }
-        public int Style_Id { get; set; }
-
-    }  
 }
