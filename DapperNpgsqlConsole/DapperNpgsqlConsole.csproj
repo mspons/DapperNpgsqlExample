@@ -66,8 +66,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CreateTables.sql" />
-    <Content Include="CreateTestData.sql" />
+    <Content Include="SQL Scripts\CreateTables.sql" />
+    <Content Include="SQL Scripts\CreateTestData.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
