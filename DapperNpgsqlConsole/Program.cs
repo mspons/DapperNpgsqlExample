@@ -3,7 +3,6 @@ using System.Configuration;
 
 namespace DapperNpgsqlConsole
 {
-
     class Program
     {
         static void Main()
