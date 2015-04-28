@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Configuration;
 
 namespace DapperNpgsqlConsole
 {
+
     class Program
     {
         static void Main()
         {
-            using (var t = new DataRetriever())
+            using (var t = new DataRetriever(ConfigurationManager.ConnectionStrings["dapper"].ToString()))
             {
-                Console.WriteLine("Beers\n=====");
+                Console.WriteLine("Beers{0}=====", Environment.NewLine);
                 
                 var beers = t.GetBeers();
 
@@ -17,7 +19,7 @@ namespace DapperNpgsqlConsole
                     Console.WriteLine("{0} - {1}", beer.Name, beer.Abv);
                 }
 
-                Console.WriteLine("\nStyles\n======");
+                Console.WriteLine("{0}Styles{0}======", Environment.NewLine);
 
                 var styles = t.GetStyles();
 
