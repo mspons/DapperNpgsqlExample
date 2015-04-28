@@ -6,4 +6,5 @@ This is just a console application written in C#. It's designed to
 be used with an an already existing (preferably empty) Postgres database, 
 but does include table creation and test data population scripts.
 
-
+The connection string in app.config will need to be modified with the 
+appropriate details for your database and database user.
